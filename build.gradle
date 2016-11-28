@@ -1,0 +1,27 @@
+apply plugin: 'java'
+
+archivesBaseName = 'derby-example'
+version = '1.0.0' 
+
+repositories {
+    mavenCentral()
+}
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'com.yooup.example.TestMain'
+}
+
+dependencies {
+    compile  'org.hibernate:hibernate-core:4.3.6.Final'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'org.slf4j:slf4j-simple:1.7.7'
+    compile 'org.javassist:javassist:3.15.0-GA'
+   
+    // https://mvnrepository.com/artifact/org.apache.derby/derby
+    compile group: 'org.apache.derby', name: 'derby', version: '10.13.1.1'
+
+    // https://mvnrepository.com/artifact/org.apache.derby/derbyclient
+    compile group: 'org.apache.derby', name: 'derbyclient', version: '10.13.1.1'
+   
+    runtime files('database')
+} 
